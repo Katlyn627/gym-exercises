@@ -1,17 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Route, Routes } from 'react-router-dom';
+import { Box } from '@mui/material';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+import './App.css';
+import ExerciseDetail from './pages/ExerciseDetail';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+const App = () => (
+  <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/exercise/:id" element={<ExerciseDetail />} />
+    </Routes>
+    <Footer />
+  </Box>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export default App;
